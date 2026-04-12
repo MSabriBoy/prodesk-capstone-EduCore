@@ -63,7 +63,7 @@ The following screens are designed in Figma:
 - Student Dashboard (Course Listing)
 - Course Player Page (Video + Lessons)
 
-🔗 Figma Link: *https://demo*
+🔗 Figma Link: *https://www.figma.com/design/FCW2k7ryWmsztXwQMF4hTz/Untitled?node-id=0-1&t=RDXqE3vc06oDPtfc-1*
 
 ## 🗄️ Database Schema (ERD)
 
@@ -95,7 +95,8 @@ The following screens are designed in Figma:
 - progress
 
 📌 ERD Diagram:
-*demo Image*
+<img width="1155" height="486" alt="Untitled" src="https://github.com/user-attachments/assets/f257e657-efd0-47a0-9b95-fd4644d49162" />
+
 
 ## 🔄 Application Flow
 
@@ -127,8 +128,8 @@ The application will be fully responsive and optimized for:
 To avoid scope creep, this project focuses on core LMS functionality such as course management, enrollment, and progress tracking. Advanced features will be considered in future iterations.
 
 ## 📌 Submission Details
-- GitHub Repository: **
-- Figma Design: **
+- GitHub Repository: *https://github.com/MSabriBoy/prodesk-capstone-EduCore*
+- Figma Design: *https://www.figma.com/design/FCW2k7ryWmsztXwQMF4hTz/Untitled?node-id=0-1&t=RDXqE3vc06oDPtfc-1*
 - Demo Video: **
 
 ## 🎯 Conclusion
