@@ -130,7 +130,6 @@ To avoid scope creep, this project focuses on core LMS functionality such as cou
 ## 📌 Submission Details
 - GitHub Repository: *https://github.com/MSabriBoy/prodesk-capstone-EduCore*
 - Figma Design: *https://www.figma.com/design/FCW2k7ryWmsztXwQMF4hTz/Untitled?node-id=0-1&t=RDXqE3vc06oDPtfc-1*
-- Demo Video: **
 
 ## 🎯 Conclusion
 EduCore demonstrates the ability to design and plan a scalable full-stack application, including UI/UX design, backend architecture, and database structuring. It reflects real-world application development practices.
