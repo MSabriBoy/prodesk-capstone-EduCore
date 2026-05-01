@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function Register() {
-
+  
   const [name, setName] = useState("");
 
   const [email, setEmail] = useState("");
