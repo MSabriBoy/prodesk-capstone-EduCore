@@ -7,6 +7,7 @@ This project is built as a capstone project to demonstrate full-stack developmen
 
 ## 🔗 Live Links
 [Frontend server Link](https://prodesk-capstone-edu-core-psi.vercel.app)
+
 [Backend server link](https://prodesk-capstone-educore-1wyq.onrender.com)
 
 ## 👨‍💻 Developer Track
