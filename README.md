@@ -5,6 +5,9 @@ EduCore is a full-stack Learning Management System (LMS) inspired by platforms l
 
 This project is built as a capstone project to demonstrate full-stack development skills, including frontend, backend, database design, and system architecture.
 
+## 🔗 Live
+[Demo Link](https://prodesk-capstone-edu-core-psi.vercel.app)
+
 ## 👨‍💻 Developer Track
 **Full Stack Developer Intern**
 
