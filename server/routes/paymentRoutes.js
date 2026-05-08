@@ -9,65 +9,67 @@ const router = express.Router();
 
 
 const stripe = Stripe(
-  process.env.STRIPE_SECRET_KEY
+    process.env.STRIPE_SECRET_KEY
 );
 
 
 router.post(
-  "/create-checkout-session",
-  protectRoute,
+    "/create-checkout-session",
+    protectRoute,
 
-  async (req, res) => {
+    async (req, res) => {
 
-    try {
+        try {
 
-      const session =
-        await stripe.checkout.sessions.create({
+            const { title, price } = req.body;
 
-          payment_method_types: ["card"],
+            const session =
+                await stripe.checkout.sessions.create({
 
-          line_items: [
+                    payment_method_types: ["card"],
 
-            {
-              price_data: {
+                    line_items: [
 
-                currency: "inr",
+                        {
+                            price_data: {
 
-                product_data: {
-                  name: "EduCore Pro Plan"
-                },
+                                currency: "inr",
 
-                unit_amount: 49900
-              },
+                                product_data: {
+                                    name: title
+                                },
 
-              quantity: 1
-            }
+                                unit_amount: price * 100
+                            },
 
-          ],
+                            quantity: 1
+                        }
 
-          mode: "payment",
+                    ],
 
-          success_url:
-            "http://localhost:5173/payment-success",
+                    mode: "payment",
 
-          cancel_url:
-            "http://localhost:5173/dashboard"
+                    success_url:
+                        "http://localhost:5173/payment-success",
 
-        });
+                    cancel_url:
+                        "http://localhost:5173/dashboard"
 
-      res.json({
-        url: session.url
-      });
+                });
 
-    } catch (error) {
+            res.json({
+                url: session.url
+            });
 
-      res.status(500).json({
-        message: error.message
-      });
+        } catch (error) {
+
+            res.status(500).json({
+                message: error.message
+            });
+
+        }
 
     }
-
-  }
 );
 
 
