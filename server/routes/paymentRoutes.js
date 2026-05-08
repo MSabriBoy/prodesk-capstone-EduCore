@@ -80,5 +80,33 @@ router.post(
     }
 );
 
+router.get(
+  "/session/:sessionId",
+  protectRoute,
+
+  async (req, res) => {
+
+    try {
+
+      const session =
+        await stripe.checkout.sessions.retrieve(
+          req.params.sessionId
+        );
+
+      res.json({
+        session
+      });
+
+    } catch (error) {
+
+      res.status(500).json({
+        message: error.message
+      });
+
+    }
+
+  }
+);
+
 
 module.exports = router;
