@@ -12,6 +12,9 @@ const stripe = Stripe(
     process.env.STRIPE_SECRET_KEY
 );
 
+const CLIENT_URL =
+    process.env.CLIENT_URL ||
+    "http://localhost:5173";
 
 router.post(
     "/create-checkout-session",
@@ -24,36 +27,41 @@ router.post(
             const { title, price } = req.body;
 
             const session =
+
                 await stripe.checkout.sessions.create({
 
                     payment_method_types: ["card"],
 
                     line_items: [
-
                         {
                             price_data: {
-
                                 currency: "inr",
 
                                 product_data: {
-                                    name: title
+                                    name: req.body.title
                                 },
 
-                                unit_amount: price * 100
+                                unit_amount:
+                                    req.body.price * 100
                             },
 
                             quantity: 1
                         }
-
                     ],
 
                     mode: "payment",
 
+                    metadata: {
+                        courseName: req.body.title,
+                        coursePrice: req.body.price,
+                        userId: req.user.id
+                    },
+
                     success_url:
-                        "http://localhost:5173/payment-success",
+                        `${CLIENT_URL}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
 
                     cancel_url:
-                        "http://localhost:5173/dashboard"
+                        `${CLIENT_URL}/dashboard`
 
                 });
 
