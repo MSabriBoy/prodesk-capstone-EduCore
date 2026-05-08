@@ -8,6 +8,8 @@ function Dashboard() {
 
   const navigate = useNavigate();
 
+  const [dashboardData, setDashboardData] = useState(null);
+
   const [courses, setCourses] = useState([]);
 
   const [title, setTitle] = useState("");
@@ -28,9 +30,31 @@ function Dashboard() {
       return;
     }
 
+    fetchDashboard();
+
     fetchCourses();
 
   }, []);
+
+
+
+  // DASHBOARD DATA
+  const fetchDashboard = async () => {
+
+    try {
+
+      const response = await API.get("/api/dashboard");
+
+      setDashboardData(response.data);
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+
+  };
+
 
 
   // GET COURSES
@@ -51,7 +75,8 @@ function Dashboard() {
   };
 
 
-  // CREATE OR UPDATE
+
+  // CREATE OR UPDATE COURSE
   const handleSubmit = async () => {
 
     try {
@@ -98,7 +123,8 @@ function Dashboard() {
   };
 
 
-  // DELETE
+
+  // DELETE COURSE
   const handleDelete = async (id) => {
 
     const confirmDelete = window.confirm(
@@ -128,7 +154,8 @@ function Dashboard() {
   };
 
 
-  // EDIT
+
+  // EDIT COURSE
   const handleEdit = (course) => {
 
     setTitle(course.title);
@@ -142,6 +169,7 @@ function Dashboard() {
   };
 
 
+
   // LOGOUT
   const handleLogout = () => {
 
@@ -152,11 +180,14 @@ function Dashboard() {
   };
 
 
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
 
       <div className="max-w-6xl mx-auto">
 
+
+        {/* HEADER */}
         <div className="flex justify-between mb-8">
 
           <h1 className="text-3xl font-bold">
@@ -173,7 +204,27 @@ function Dashboard() {
         </div>
 
 
-        {/* FORM */}
+
+        {/* USER DASHBOARD */}
+        <div className="bg-white p-6 rounded-2xl shadow mb-8">
+
+          <h2 className="text-2xl font-bold mb-4">
+            Dashboard Overview
+          </h2>
+
+          <p className="mb-2">
+            Name: {dashboardData?.name}
+          </p>
+
+          <p>
+            Role: {dashboardData?.role}
+          </p>
+
+        </div>
+
+
+
+        {/* COURSE FORM */}
         <div className="bg-white p-6 rounded-2xl shadow mb-8">
 
           <h2 className="text-xl font-semibold mb-4">
@@ -224,6 +275,7 @@ function Dashboard() {
           </button>
 
         </div>
+
 
 
         {/* COURSE LIST */}
