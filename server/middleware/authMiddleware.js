@@ -3,15 +3,19 @@ const jwt = require("jsonwebtoken");
 const protectRoute = async (req, res, next) => {
   try {
 
-    const authHeader = req.headers.authorization;
+    const authHeader =
+      req.headers.authorization;
 
     if (!authHeader) {
+
       return res.status(401).json({
         message: "No token provided"
       });
+
     }
 
-    const token = authHeader.split(" ")[1];
+    const token =
+      authHeader.split(" ")[1];
 
     const decoded = jwt.verify(
       token,
@@ -23,9 +27,11 @@ const protectRoute = async (req, res, next) => {
     next();
 
   } catch (error) {
+
     return res.status(401).json({
       message: "Invalid token"
     });
+
   }
 };
 
