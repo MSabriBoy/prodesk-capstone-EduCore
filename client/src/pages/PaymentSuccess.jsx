@@ -67,8 +67,9 @@ function PaymentSuccess() {
 
           <div className="space-y-3">
 
-            <p>
+            <p className="break-all mt-2">
               <strong>Transaction ID:</strong>{" "}
+              <br />
               {receipt.id}
             </p>
 
