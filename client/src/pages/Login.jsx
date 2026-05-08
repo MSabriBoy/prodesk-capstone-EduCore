@@ -1,20 +1,25 @@
 import { useState } from "react";
-import axios from "axios";
+
+import API from "../api";
+
 import { useNavigate, Link } from "react-router-dom";
+
 
 function Login() {
 
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
 
 
   const handleLogin = async () => {
+
     try {
 
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+      const response = await API.post(
+        "/api/auth/login",
         {
           email,
           password
@@ -32,9 +37,13 @@ function Login() {
 
     } catch (error) {
 
-      alert(error.response?.data?.message || "Login failed");
+      alert(
+        error.response?.data?.message ||
+        "Login failed"
+      );
 
     }
+
   };
 
 
@@ -69,13 +78,16 @@ function Login() {
         </button>
 
         <p className="text-center mt-4">
+
           New here?{" "}
+
           <Link
             to="/register"
             className="font-semibold"
           >
             Register
           </Link>
+
         </p>
 
       </div>
