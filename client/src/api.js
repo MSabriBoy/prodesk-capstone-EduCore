@@ -1,19 +1,32 @@
 import axios from "axios";
 
+
+const BASE_URL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:5000"
+    : import.meta.env.VITE_API_URL;
+
+
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
+  baseURL: BASE_URL
 });
 
 
 // Attach JWT automatically
 API.interceptors.request.use((req) => {
+
   const token = localStorage.getItem("token");
 
   if (token) {
-    req.headers.Authorization = `Bearer ${token}`;
+
+    req.headers.Authorization =
+      `Bearer ${token}`;
+
   }
 
   return req;
+
 });
+
 
 export default API;
