@@ -65,10 +65,19 @@ const updateCourse = async (req, res) => {
         res.status(200).json(updatedCourse);
 
     } catch (error) {
-        res.status(500).json({
-            message: error.message
+
+    if (error.name === "CastError") {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid course id"
         });
     }
+
+    res.status(500).json({
+        success: false,
+        message: "Something went wrong"
+    });
+}
 };
 
 const deleteCourse = async (req, res) => {
@@ -95,10 +104,19 @@ const deleteCourse = async (req, res) => {
         });
 
     } catch (error) {
-        res.status(500).json({
-            message: error.message
+
+    if (error.name === "CastError") {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid course id"
         });
     }
+
+    res.status(500).json({
+        success: false,
+        message: "Something went wrong"
+    });
+}
 };
 
 module.exports = {
