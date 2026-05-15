@@ -9,13 +9,19 @@ const authRoutes = require("./routes/authRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
-
+const rateLimit = require("express-rate-limit");
+const aiRoutes = require("./routes/aiRoutes");
 
 
 
 connectDB();
 
 const app = express();
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10
+});
 
 app.use(
   cors({
@@ -27,6 +33,8 @@ app.use(
 );
 app.use(express.json());
 
+app.use("/api/auth", limiter);
+app.use("/api/ai", limiter);
 app.use("/api/auth", authRoutes);
 app.use("/api", dashboardRoutes);
 app.use("/api/courses", courseRoutes);
