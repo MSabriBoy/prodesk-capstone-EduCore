@@ -10,9 +10,9 @@ function App() {
   return (
     <BrowserRouter>
 
-      <Routes>
+      <Toaster position="top-right" />
 
-        <Toaster position="top-right" />
+      <Routes>
 
         <Route path="/" element={<Login />} />
 
