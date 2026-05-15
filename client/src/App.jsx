@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -10,6 +11,8 @@ function App() {
     <BrowserRouter>
 
       <Routes>
+
+        <Toaster position="top-right" />
 
         <Route path="/" element={<Login />} />
 

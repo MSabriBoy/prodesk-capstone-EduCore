@@ -4,6 +4,8 @@ import API from "../api";
 
 import { useNavigate, Link } from "react-router-dom";
 
+import { toast } from "react-hot-toast";
+
 
 function Login() {
 
@@ -31,13 +33,13 @@ function Login() {
         response.data.token
       );
 
-      alert("Login Successful");
+      toast.success("Login successful");
 
       navigate("/dashboard");
 
     } catch (error) {
 
-      alert(
+      toast.error(
         error.response?.data?.message ||
         "Login failed"
       );
