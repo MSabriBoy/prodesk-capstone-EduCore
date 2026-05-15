@@ -30,11 +30,16 @@ router.post(
                 });
 
             const result = await model.generateContent(
-                `Generate 5 quiz questions about ${topic}. Return only plain text.`
+                `Generate exactly 5 quiz questions about ${topic}. 
+                Return each question on a new line with proper numbering.
+                Do not include explanations or extra text.`
             );
 
-            const text =
-                result.response.text();
+            const text = result
+                .response
+                .text()
+                .split("\n")
+    .filter(item => item.trim());
 
             res.json({
                 success: true,
