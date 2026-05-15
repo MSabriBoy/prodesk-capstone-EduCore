@@ -36,6 +36,7 @@ app.use(express.json());
 app.use("/api/auth", limiter);
 app.use("/api/ai", limiter);
 app.use("/api/auth", authRoutes);
+app.use("/api/ai", aiRoutes);
 app.use("/api", dashboardRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/payment", paymentRoutes);
